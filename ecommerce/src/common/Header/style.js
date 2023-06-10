@@ -1,0 +1,91 @@
+import styled, { keyframes } from "styled-components";
+
+const fadeIn = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`;
+
+export const Container = styled.div`
+  /* Estilos para o container principal */
+  background-color: #111;
+  padding: 20px;
+  animation: ${fadeIn} 0.5s ease-in;
+`;
+
+export const LeftContainer = styled.div`
+  /* Estilos para o container esquerdo */
+  display: flex;
+  align-items: center;
+`;
+
+export const LogoContainer = styled.div`
+  /* Estilos para o container do logo */
+  margin-right: 10px;
+`;
+
+export const ProfileContainer = styled.div`
+  /* Estilos para o container do perfil */
+  background-color: #333;
+  padding: 10px;
+  border-radius: 5px;
+
+  span {
+    font-weight: bold;
+  }
+
+  span:first-child {
+    color: #ccc;
+  }
+
+  span:last-child {
+    color: #ff0000;
+  }
+`;
+
+export const RightContainer = styled.div`
+  /* Estilos para o container direito */
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+`;
+
+export const SearchContainer = styled.div`
+  /* Estilos para o container de busca */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  animation: ${fadeIn} 0.5s ease-in;
+`;
+
+export const SearchBar = styled.input`
+  /* Estilos para a barra de busca */
+  padding: 8px;
+  width: 200px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease-in-out;
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  }
+`;
+
+export const LogoImage = styled.img`
+  /* Estilos para a imagem do logo */
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease-in-out;
+
+  &:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  }
+`;
