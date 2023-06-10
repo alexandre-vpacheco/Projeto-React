@@ -21,7 +21,7 @@ export function Header() {
         <LeftContainer>
           <LogoContainer>
             <Link to={"/"}>
-              <LogoImage src="https://source.unsplash.com/720x400?car" alt="Logo" />
+              <LogoImage src="https://source.unsplash.com/720x400?onepiece" alt="Logo" />
             </Link>
           </LogoContainer>
         </LeftContainer>
