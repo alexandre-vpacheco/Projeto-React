@@ -14,6 +14,15 @@ export const Container = styled.div`
   background-color: #111;
   padding: 20px;
   animation: ${fadeIn} 0.5s ease-in;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 20px;
+  }
 `;
 
 export const LeftContainer = styled.div`
@@ -50,7 +59,6 @@ export const RightContainer = styled.div`
   /* Estilos para o container direito */
   display: flex;
   align-items: center;
-  justify-content: flex-end;
 `;
 
 export const SearchContainer = styled.div`
@@ -75,17 +83,26 @@ export const SearchBar = styled.input`
     outline: none;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
   }
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 export const LogoImage = styled.img`
   /* Estilos para a imagem do logo */
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
+  width: 200px;
+  height: 100px;
+  border-radius: 30%;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   transition: box-shadow 0.3s ease-in-out;
 
   &:hover {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  }
+
+  @media (max-width: 768px) {
+    width: 150px;
+    height: 75px;
   }
 `;
