@@ -21,7 +21,7 @@ export function Header() {
         <LeftContainer>
           <LogoContainer>
             <Link to={"/"}>
-              <LogoImage src="/path/to/logo.png" alt="Logo" />
+              <LogoImage src="https://source.unsplash.com/720x400?car" alt="Logo" />
             </Link>
           </LogoContainer>
         </LeftContainer>
@@ -30,15 +30,15 @@ export function Header() {
           style={{
             display:
               location.pathname === "/" ||
-              location.pathname === "/anime" ||
+              location.pathname === "/animes" ||
               location.pathname === "/jogos" ||
-              location.pathname === "/filme" ||
+              location.pathname === "/filmes" ||
               location.pathname === "/outros" 
                 ? "flex"
                 : "none",
           }}
         >
-          <SearchBar placeholder="Search..." />
+          <SearchBar placeholder="O que você procura?"  />
         </SearchContainer>
         <RightContainer>
           <ProfileContainer>

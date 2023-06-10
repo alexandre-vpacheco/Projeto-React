@@ -1,7 +1,5 @@
 import styled, { keyframes } from "styled-components";
 
-
-
 const slideInFromLeft = keyframes`
   0% {
     transform: translateX(-100%);
@@ -23,33 +21,19 @@ export const Container = styled.div`
   justify-content: start;
   flex-direction: column;
   width: 100%;
-  background-color: #222;
-  height: 100%;
-`;
-
-export const TitleContainer = styled.header`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-
-  img {
-    padding: 10px;
-  }
-  background-color: #444;
-  width: 100%;
-
-  @media screen and (max-width: 768px) {
-    flex-direction: column;
-    padding: 20px;
-    text-align: center;
-  }
+  background-color: gray;
+  height: 100vh;
 `;
 
 export const NavBarContainer = styled.div`
-  margin: 0;
-  width: 100%;
-  height: 80px;
+  display: inline-flex;
+  position: relative;
+  overflow: hidden;
+  max-width: 100%;
+  background-color: #fff;
+  padding: 0 20px;
+  border-radius: 40px;
+  box-shadow: 0 10px 40px rgba(159, 162, 177, 0.9);
 `;
 
 export const NavBar = styled.ul`
@@ -73,22 +57,63 @@ export const NavBar = styled.ul`
 `;
 
 export const NavItem = styled.li`
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  font-size: 20px;
-  height: 100%;
-  padding: 0 2px;
-  border-bottom: ${(props) =>
-    props.isActive ? "4px solid rgba(203, 18, 28, 0.8)" : "none"};
-  color: ${(props) => (props.isActive ? " rgba(203, 18, 28, 0.8)" : "#737070")};
-  transition: color 0.3s ease-in-out;
-
-  &:hover {
-    color: rgba(203, 18, 28, 0.8);
-  }
+  color: ${(props) => (props.isActive ? props.color : "#83818c")};
+  padding: 20px;
+  text-decoration: none;
+  transition: 0.3s;
+  margin: 0 6px;
+  z-index: 1;
+  font-family: "DM Sans", sans-serif;
+  font-weight: 500;
+  position: relative;
 
   @media screen and (max-width: 768px) {
     font-size: 16px;
   }
+
+  &:before {
+    content: "";
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background-color: ${(props) => (props.isActive ? props.color : "#dfe2ea")};
+    border-radius: 8px 8px 0 0;
+    opacity: 0;
+    transition: 0.3s;
+  }
+
+  &:hover:before {
+    opacity: 1;
+    bottom: 0;
+  }
+
+  &:hover {
+    color: #333;
+  }
+
+  .nav-indicator {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 4px;
+    transition: 0.4s;
+    height: 5px;
+    z-index: 1;
+    border-radius: 8px 8px 0 0;
+    background-color: ${(props) => (props.isActive ? props.color : "#dfe2ea")};
+    opacity: ${(props) => (props.isActive ? "1" : "0")};
+  }
+`;
+
+export const NavIndicator = styled.div`
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 4px;
+  transition: 0.4s;
+  height: 5px;
+  z-index: 1;
+  border-radius: 8px 8px 0 0;
 `;
