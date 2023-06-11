@@ -23,8 +23,27 @@ export function Home() {
     setSelectedItem(pathToIndex[location.pathname]);
   }, [location.pathname]);
 
+  useEffect(() => {
+    function fetchData() {
+        setTimeout(() => {
+            var pkmnFormatted = pokemonData.map(pokemon => {
+                var str = "" + pokemon.id
+                var pad = "000"
+                var newId = pad.substring(0, pad.length - str.length) + str
+
+                return {...pokemon, newId: newId}
+            });
+
+            setPokemons(pkmnFormatted)
+        }, 2000)
+    }
+
+    fetchData();
+}, [])
+
   return (
     <Container>
+
       <NavBarContainer>
         <NavBar>
           <NavItem
@@ -69,6 +88,11 @@ export function Home() {
           </NavItem>
         </NavBar>
       </NavBarContainer>
+
+      <img src="./assets/action11"></img>
+
     </Container>
-  );
+
+    
+  )
 }

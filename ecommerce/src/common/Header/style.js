@@ -47,12 +47,26 @@ export const ProfileContainer = styled.div`
   }
 
   span:first-child {
-    color: #ccc;
+    color: #DCDCDC;
   }
 
   span:last-child {
     color: #ff0000;
   }
+`;
+
+export const ContactContainer = styled.div`
+background-color: 	#FFFFFF;
+padding: 3px;
+`;
+
+export const CartContainer = styled.div`
+
+`;
+
+export const LoginContainer = styled.div`
+background-color: 	#FFFFFF;
+padding: 3px;
 `;
 
 export const RightContainer = styled.div`
@@ -73,11 +87,12 @@ export const SearchContainer = styled.div`
 export const SearchBar = styled.input`
   /* Estilos para a barra de busca */
   padding: 8px;
-  width: 200px;
+  width: 300px;
   border: none;
   border-radius: 5px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   transition: box-shadow 0.3s ease-in-out;
+  margin-right: 100px;
 
   &:focus {
     outline: none;
