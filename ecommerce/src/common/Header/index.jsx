@@ -40,6 +40,8 @@ export function Header() {
           </Link>
         </LogoContainer>
 
+        <RightContainer>
+
         <CartContainer style={{
           display:
             location.pathname === "/Login" ||
@@ -50,7 +52,9 @@ export function Header() {
         }}>
 
           <Link to={"/Cart"}>
-            <button>Carrinho</button>
+
+            <a>Carrinho</a>
+
           </Link>
         </CartContainer>
 
@@ -62,13 +66,17 @@ export function Header() {
               : "flex",
         }}>
           <Link to={"/Login"}>
-            Fazer Login
+
+            <a>Fazer Login</a>
           </Link>
         </LoginContainer>
 
-        <RightContainer>
+        
           <ContactContainer>
-            <Link to={"/Contact"}>Fale com a gente</Link>
+            <Link to={"/Contact"}>
+              <a>Fale com a gente</a>
+              </Link>
+
           </ContactContainer>
         </RightContainer>
       </Container>
