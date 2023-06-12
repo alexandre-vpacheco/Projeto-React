@@ -1,7 +1,9 @@
 import { Link, useLocation } from "react-router-dom";
 import { Container, NavBarContainer, NavBar, NavItem, NavIndicator } from "./style";
 import { useEffect, useState } from "react";
+
 import iconAction from "../../assets/action11.jpg" 
+
 
 export function Home() {
   const location = useLocation();
@@ -90,7 +92,9 @@ export function Home() {
         </NavBar>
       </NavBarContainer>
 
+
       <img src={iconAction}></img>
+
 
     </Container>
 

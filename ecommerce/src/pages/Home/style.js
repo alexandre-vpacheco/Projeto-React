@@ -30,11 +30,13 @@ export const NavBarContainer = styled.div`
   position: relative;
   overflow: hidden;
   max-width: 100%;
+
   background-color: #343434;
   padding: 0 20px;
   height: 30px;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
+
   box-shadow: 0 10px 40px rgba(159, 162, 177, 0.9);
 `;
 
@@ -59,7 +61,9 @@ export const NavBar = styled.ul`
 `;
 
 export const NavItem = styled.li`
+
   
+
   padding: 20px;
   text-decoration: none;
   transition: 0.3s;
@@ -69,6 +73,7 @@ export const NavItem = styled.li`
   font-weight: 500;
   position: relative;
 
+
   a{
     color: ${(props) => {
     let color = '';
@@ -76,6 +81,7 @@ export const NavItem = styled.li`
     return color;
     }};
   }
+
 
   @media screen and (max-width: 768px) {
     font-size: 16px;

@@ -12,7 +12,9 @@ const fadeIn = keyframes`
 export const Container = styled.div`
   /* Estilos para o container principal */
   
+
   background-color: rgb(221, 41, 11);
+
   padding: 0px;
   height: 75px;
   animation: ${fadeIn} 0.5s ease-in;
@@ -38,10 +40,12 @@ export const LogoContainer = styled.div`
   margin-right: 10px;
   img {
     height: 75px;
+
     box-shadow: none;
   }
   img:hover{
     box-shadow: none;
+
   }
 `;
 
@@ -66,6 +70,8 @@ export const ProfileContainer = styled.div`
 
 export const ContactContainer = styled.div`
 
+
+
 `;
 
 export const CartContainer = styled.div`
@@ -78,6 +84,7 @@ export const LoginContainer = styled.div`
 
 export const RightContainer = styled.div`
   /* Estilos para o container direito */
+
   width: 400px;
   display: flex;
   align-items: center;
@@ -95,6 +102,7 @@ export const RightContainer = styled.div`
     color: rgb(221, 41, 11);
     border-color: white;
     }
+
 `;
 
 export const SearchContainer = styled.div`
@@ -115,7 +123,9 @@ export const SearchBar = styled.input`
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   transition: box-shadow 0.3s ease-in-out;
   margin-right: 100px;
+
   background-color: #fff;
+
 
   &:focus {
     outline: none;

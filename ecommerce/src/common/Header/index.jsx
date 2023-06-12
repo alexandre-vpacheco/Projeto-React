@@ -41,6 +41,7 @@ export function Header() {
         </LogoContainer>
 
         <RightContainer>
+
         <CartContainer style={{
           display:
             location.pathname === "/Login" ||
@@ -51,7 +52,9 @@ export function Header() {
         }}>
 
           <Link to={"/Cart"}>
+
             <a>Carrinho</a>
+
           </Link>
         </CartContainer>
 
@@ -63,6 +66,7 @@ export function Header() {
               : "flex",
         }}>
           <Link to={"/Login"}>
+
             <a>Fazer Login</a>
           </Link>
         </LoginContainer>
@@ -72,6 +76,7 @@ export function Header() {
             <Link to={"/Contact"}>
               <a>Fale com a gente</a>
               </Link>
+
           </ContactContainer>
         </RightContainer>
       </Container>
