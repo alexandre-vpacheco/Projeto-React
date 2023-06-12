@@ -2,13 +2,20 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   height: 100vh;
+  background: url("https://i.pinimg.com/originals/25/c4/55/25c455190acf7fa1911b29a03596ac74.jpg");
+background-size: cover;
+background-repeat: no-repeat;
+background-position-y: center;
+background-color: rgba(0, 0, 0, .5);
 `;
 
 export const BoxContainer = styled.div`
-    background: var(--bg-box);
+    background-color: rgba(0, 0, 0, .5);
     max-width: 400px;
-    margin: 100px auto 0px;
-    padding-bottom: 20px;
+    margin: 0px auto 100px auto;
+    padding: 50px 0;
+    height: auto;
+    border-radius: 15px;
 `;
 export const TitleContainer = styled.div`
   display: flex;
@@ -86,7 +93,7 @@ export const SendMsgBt = styled.button`
 margin: auto;
     margin-top: 0px;
     margin-right: 10px;
-    margin-bottom: ;
+    
     margin-left: 10px;
-}
+
 `;

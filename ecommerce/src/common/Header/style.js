@@ -11,13 +11,15 @@ const fadeIn = keyframes`
 
 export const Container = styled.div`
   /* Estilos para o container principal */
-  background-color: #111;
-  padding: 20px;
+  
+  background-color: #EC0909;
+  padding: 0px;
+  height: 75px;
   animation: ${fadeIn} 0.5s ease-in;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -34,6 +36,9 @@ export const LeftContainer = styled.div`
 export const LogoContainer = styled.div`
   /* Estilos para o container do logo */
   margin-right: 10px;
+  img {
+    height: 75px;
+  }
 `;
 
 export const ProfileContainer = styled.div`

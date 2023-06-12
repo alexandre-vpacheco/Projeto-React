@@ -2,9 +2,7 @@ import { Link, Outlet, useLocation } from "react-router-dom";
 
 import {
   Container,
-  LeftContainer,
   LogoContainer,
-  ProfileContainer,
   RightContainer,
   SearchContainer,
   SearchBar,
@@ -13,6 +11,7 @@ import {
   CartContainer,
   LoginContainer,
 } from "./style";
+import { FooterContainer } from "../Footer/style";
 
 
 export function Header() {
@@ -25,13 +24,11 @@ export function Header() {
         <SearchContainer
           style={{
             display:
-              location.pathname === "/" ||
-                location.pathname === "/animes" ||
-                location.pathname === "/jogos" ||
-                location.pathname === "/filmes" ||
-                location.pathname === "/outros"
-                ? "flex"
-                : "none",
+              location.pathname === "/Login" ||
+                location.pathname === "/Contact"
+
+                ? "none"
+                : "flex",
           }}
         >
           <SearchBar placeholder="O que você procura?" />
@@ -43,13 +40,27 @@ export function Header() {
           </Link>
         </LogoContainer>
 
-        <CartContainer>
+        <CartContainer style={{
+          display:
+            location.pathname === "/Login" ||
+              location.pathname === "/Contact"
+
+              ? "none"
+              : "flex",
+        }}>
+
           <Link to={"/Cart"}>
             <button>Carrinho</button>
           </Link>
         </CartContainer>
 
-        <LoginContainer>
+        <LoginContainer style={{
+          display:
+              location.pathname === "/Contact"
+
+              ? "none"
+              : "flex",
+        }}>
           <Link to={"/Login"}>
             Fazer Login
           </Link>
@@ -62,6 +73,7 @@ export function Header() {
         </RightContainer>
       </Container>
       <Outlet />
+      <FooterContainer />
     </>
   );
 }

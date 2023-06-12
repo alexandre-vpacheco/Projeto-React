@@ -2,13 +2,19 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   height: 100vh;
-`;
+  background: url("https://i.etsystatic.com/15771164/r/il/a5a362/2203536272/il_fullxfull.2203536272_fwpd.jpg");
+background-size: cover;
+background-repeat: no-repeat;
+background-position-y: center;
+  `;
 
 export const BoxContainer = styled.div`
-    background: var(--bg-box);
+    background-color: rgba(0, 0, 0, .5);
     max-width: 400px;
-    margin: 100px auto 0px;
-    padding-bottom: 20px;
+    margin: 0px auto 100px auto;
+    padding: 100px 0;
+    height: auto ;
+    border-radius: 15px;
 `;
 export const TitleContainer = styled.div`
   display: flex;
@@ -87,7 +93,7 @@ export const SendMsgBt = styled.button`
 margin: auto;
     margin-top: 0px;
     margin-right: 10px;
-    margin-bottom: ;
+    //margin-bottom: ;
     margin-left: 10px;
-}
+
 `;
