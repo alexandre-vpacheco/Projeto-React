@@ -13,11 +13,18 @@ import {
   LogoutContainer
 } from "./style";
 import { FooterContainer } from "../Footer/style";
+import { ThemeProvider } from "styled-components";
+import { lightTheme,darkTheme } from "../../common/darkmode/theme";
+import { GlobalStyle } from "../../common/GlobalStyles.js/GlobalStyles";
 
 
 export function Header() {
   const location = useLocation();
   const [user, setUser] = useState('');
+  const [theme,setTheme] = useState( "light")
+
+  const themeToggler = ()=>{
+      theme === "light" ? setTheme ('dark') : setTheme('light');}
 
   useEffect(() => {
     setUser(getLocal('user'));
@@ -26,12 +33,15 @@ export function Header() {
   function logout() {
     setLocal('user', '');
     setUser(getLocal('user'));
-    windown.location.href = '/';
+    window.location.href = '/';
   }
 
   return (
     <>
+        <ThemeProvider theme={theme === 'light' ? lightTheme  : darkTheme}>
       <Container>
+      <GlobalStyle/>
+     <button onClick={()=> themeToggler()}>Chenge theme</button>
 
         <SearchContainer
           style={{
@@ -90,8 +100,11 @@ export function Header() {
           
         </RightContainer>
       </Container>
+      </ThemeProvider>
       <Outlet />
+      
       <FooterContainer />
+      
     </>
   );
 }
