@@ -23,9 +23,10 @@ export const Container = styled.div`
   align-items: center;
   justify-content: space-around;
 
-  @media (max-width: 768px) {
-    flex-direction: column;
-    gap: 20px;
+  @media screen and (max-width: 1015px) {
+   flex-direction: column;
+   height: auto;
+   align-items: center;
   }
 `;
 
@@ -45,8 +46,8 @@ export const LogoContainer = styled.div`
   }
   img:hover{
     box-shadow: none;
-
   }
+  
 `;
 
 export const ProfileContainer = styled.div`
@@ -68,41 +69,70 @@ export const ProfileContainer = styled.div`
   }
 `;
 
-export const ContactContainer = styled.div`
-
-
-
-`;
-
-export const CartContainer = styled.div`
-
-`;
-
-export const LoginContainer = styled.div`
-
-`;
-
 export const RightContainer = styled.div`
   /* Estilos para o container direito */
 
-  width: 400px;
+  width: auto;
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  a{
+  justify-content: center;
+  gap: 10px;
+
+  @media only screen and (max-width: 1015px) {
+    border-top: 1px solid #fff;
+    width: 90%;
+    padding: 5px 0;
+    justify-content: space-around;
+  }
+`;
+
+export const LoginContainer = styled.div`
+  span{
     color: white;
     font-weight: bold;
-    transition: .1s;
+    transition: .3s;
     padding: 6px;
     border:2px solid transparent;
-  }
-  a:hover{
     border-radius: 10px;
+  }
+  
+  span:hover{
     background-color: white;
     color: rgb(221, 41, 11);
     border-color: white;
-    }
+  }
+`;
 
+export const LogoutContainer = styled.div`
+  #linkHeader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #fff;
+  }
+
+  #logout{
+    font-size: 13px;
+    cursor: pointer;
+    background: #fff;
+    color: rgb(221, 41, 11);
+    border-radius: 10px;
+    padding: 5px;
+    font-weight: bolder;
+    transition: .3s;
+  }
+
+  #logout:hover {
+    background: rgb(221, 41, 11);
+    color: #fff;
+  }
+  
+  @media only screen and (max-width: 1015px) {
+    #linkHeader {
+      flex-direction: row;
+      gap: 10px;
+    }
+  }
 `;
 
 export const SearchContainer = styled.div`
@@ -123,7 +153,7 @@ export const SearchBar = styled.input`
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   transition: box-shadow 0.3s ease-in-out;
   margin-right: 100px;
-
+  color: #000;
   background-color: #fff;
 
 
@@ -132,8 +162,10 @@ export const SearchBar = styled.input`
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
   }
 
-  @media (max-width: 768px) {
+  @media only screen and (max-width: 1015px) {
     width: 100%;
+    margin: 0;
+    display: none;
   }
 `;
 
@@ -149,7 +181,7 @@ export const LogoImage = styled.img`
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   }
 
-  @media (max-width: 768px) {
+  @media only screen and (max-width: 1015px) {
     width: 150px;
     height: 75px;
   }

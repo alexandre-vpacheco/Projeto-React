@@ -53,7 +53,7 @@ export function Home() {
             onClick={() => setSelectedItem(1)}
             color="#FF0000"
           >
-            <Link to={"/"}>Home</Link>
+            <Link to={"/"} className="link">Home</Link>
             {selectedItem === 1 && <NavIndicator className="nav-indicator" />}
           </NavItem>
           <NavItem
@@ -61,15 +61,15 @@ export function Home() {
             onClick={() => setSelectedItem(2)}
             color="#00FFFF"
           >
-            <Link to={"/animes"}>Animes</Link>
+            <Link to={"/animes"} className="link">Animes</Link>
             {selectedItem === 2 && <NavIndicator className="nav-indicator" />}
           </NavItem>
           <NavItem
             isActive={selectedItem === 3}
             onClick={() => setSelectedItem(3)}
-            color="#0000CD"
+            color="#9b991a"
           >
-            <Link to={"/jogos"}>Jogos</Link>
+            <Link to={"/jogos"} className="link">Jogos</Link>
             {selectedItem === 3 && <NavIndicator className="nav-indicator" />}
           </NavItem>
           <NavItem
@@ -77,7 +77,7 @@ export function Home() {
             onClick={() => setSelectedItem(4)}
             color="#7CFC00"
           >
-            <Link to={"/filmes"}>Filmes</Link>
+            <Link to={"/filmes"} className="link">Filmes</Link>
             {selectedItem === 4 && <NavIndicator className="nav-indicator" />}
           </NavItem>
           <NavItem
@@ -85,7 +85,7 @@ export function Home() {
             onClick={() => setSelectedItem(5)}
             color="#FF00FF"
           >
-            <Link to={"/outros"}>Outros</Link>
+            <Link to={"/outros"} className="link">Outros</Link>
             {selectedItem === 5 && <NavIndicator className="nav-indicator" />}
           </NavItem>
         </NavBar>

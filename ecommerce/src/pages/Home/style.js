@@ -42,6 +42,10 @@ export const NavBarContainer = styled.div`
   border-bottom-right-radius: 5px;
 
   box-shadow: 0 10px 40px rgba(159, 162, 177, 0.9);
+
+  @media screen and (max-width: 768px) {
+    padding: 0;
+  }
 `;
 
 export const NavBar = styled.ul`
@@ -57,6 +61,7 @@ export const NavBar = styled.ul`
 
   @media screen and (max-width: 768px) {
     padding: 0;
+    gap: 10px;
   }
 
   a {
@@ -65,30 +70,30 @@ export const NavBar = styled.ul`
 `;
 
 export const NavItem = styled.li`
-
-  
-
   padding: 20px;
   text-decoration: none;
   transition: 0.3s;
   margin: 0 6px;
   z-index: 1;
-  font-family: "DM Sans", sans-serif;
-  font-weight: 500;
-  position: relative;
 
-
-  a{
+  .link{
     color: ${(props) => {
     let color = '';
     props.isActive ? color = props.color: color='#83818c'
     return color;
     }};
+    font-weight: bold;
+    font-family: "DM Sans", sans-serif;
   }
 
 
   @media screen and (max-width: 768px) {
-    font-size: 16px;
+    padding: 0 5px;
+    margin: 0;
+    .link {
+      font-size: 16px;
+      margin: 0;
+    }
   }
 
   &:before {
@@ -144,6 +149,11 @@ export const ContainerProducts = styled.div`
   width: 80%;
   margin: 50px auto;
   gap: 50px;
+
+  @media only screen and (max-width: 800px) {
+    grid-template-columns: auto;
+    width: 60%;
+  }
 `;
 
 
@@ -170,7 +180,7 @@ export const CardProduct = styled.div`
   }
 
   img {
-    width: 200px;
+    width: 15vw;
   }
 
 
@@ -188,5 +198,11 @@ export const CardProduct = styled.div`
   @keyframes cards {
     0% {opacity: 0;}
     100% {opacity: 1;}
+  }
+
+  @media only screen and (max-width: 800px) {
+    img {
+      width: 50vw;
+    }
   }
 `;
