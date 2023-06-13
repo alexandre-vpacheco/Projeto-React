@@ -21,12 +21,9 @@ export const Container = styled.div`
   justify-content: start;
   flex-direction: column;
   width: 100%;
-  background-color: gray;
+  
   min-height: 100vh;
-  background: url('https://marketplace.canva.com/EAFHm4JWsu8/1/0/1600w/canva-pink-landscape-desktop-wallpaper-HGxdJA_xIx0.jpg');
-  background-repeat: no-repeat;
-  background-size: cover; 
-  background-attachment: fixed;
+
 `;
 
 export const NavBarContainer = styled.div`
@@ -145,7 +142,7 @@ export const NavIndicator = styled.div`
 
 export const ContainerProducts = styled.div`
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: auto auto auto auto;
   width: 80%;
   margin: 50px auto;
   gap: 50px;
@@ -171,18 +168,20 @@ export const CardProduct = styled.div`
   transition: .1s;
   text-align: center;
   background-color: #ffffff05;
-  backdrop-filter: blur(51px);
-  -webkit-backdrop-filter: blur(25px);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(15px);
   animation: cards .3s linear;
+  border-radius: 7%;
 
   &:hover {
-    box-shadow: 1px 1px 10px #fff;
+    transform: scale(1.1);
+    box-shadow: 0px 0px 15px 10px rgba(255,18,18,0.75);
+    
   }
 
   img {
     width: 15vw;
   }
-
 
   h1 {
     font-size: 20px;
@@ -196,8 +195,12 @@ export const CardProduct = styled.div`
   }
 
   @keyframes cards {
-    0% {opacity: 0;}
-    100% {opacity: 1;}
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
   }
 
   @media only screen and (max-width: 800px) {
