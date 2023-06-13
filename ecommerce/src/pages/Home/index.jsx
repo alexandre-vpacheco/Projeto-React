@@ -10,7 +10,7 @@ import {
 } from "./style";
 import { useEffect, useState } from "react";
 import { api } from "../../services/api";
-import iconAction from "../../assets/action11.jpg"
+import { setLocal } from "../../services/localStorage";
 
 
 export function Home() {
@@ -43,6 +43,11 @@ export function Home() {
 
     fetchData();
   }, [])
+
+  function goToProduct(id) {
+    setLocal('idProduct', id);
+    window.location.href = '/product';
+  }
 
   return (
     <Container>
@@ -118,7 +123,7 @@ export function Home() {
 
           if(category === '') {
             return (
-              <CardProduct key={p.idProduto}>
+              <CardProduct key={p.idProduto} onClick={() => {goToProduct(p.idProduto)}}>
                 <img src={p.imagem} alt={p.descricao} />
                 <div>
                   <h1>{p.nome}</h1>
@@ -129,7 +134,7 @@ export function Home() {
           }
           else if(p.categoriaDTO.nome === category) {
             return (
-              <CardProduct key={p.idProduto}>
+              <CardProduct key={p.idProduto} onClick={() => {goToProduct(p.idProduto)}}>
                 <img src={p.imagem} alt={p.descricao} />
                 <div>
                   <h1>{p.nome}</h1>
