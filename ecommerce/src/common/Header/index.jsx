@@ -14,17 +14,19 @@ import {
 } from "./style";
 import { FooterContainer } from "../Footer/style";
 import { ThemeProvider } from "styled-components";
-import { lightTheme,darkTheme } from "../../common/darkmode/theme";
+import { lightTheme, darkTheme } from "../../common/darkmode/theme";
 import { GlobalStyle } from "../../common/GlobalStyles.js/GlobalStyles";
+import { useProducts } from "../../hooks/useProducts";
 
 
 export function Header() {
   const location = useLocation();
   const [user, setUser] = useState('');
-  const [theme,setTheme] = useState( "light")
-
-  const themeToggler = ()=>{
-      theme === "light" ? setTheme ('dark') : setTheme('light');}
+  const [theme, setTheme] = useState("light")
+  const {products, setFilteredProducts} = useProducts()
+  const themeToggler = () => {
+    theme === "light" ? setTheme('dark') : setTheme('light');
+  }
 
   useEffect(() => {
     setUser(getLocal('user'));
@@ -38,54 +40,61 @@ export function Header() {
 
   return (
     <>
-        <ThemeProvider theme={theme === 'light' ? lightTheme  : darkTheme}>
-      <Container>
-      <GlobalStyle/>
-     <button onClick={()=> themeToggler()}>Chenge theme</button>
+      <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+        <Container>
+          <GlobalStyle />
 
-        <SearchContainer
-          style={{
-            display:
-              location.pathname === "/Login" ||
-                location.pathname === "/Contact"
-
-                ? "none"
-                : "flex",
-          }}
-        >
-          <SearchBar placeholder="O que você procura?" />
-        </SearchContainer>
-
-        <LogoContainer>
-          <Link to={"/"}>
-            <LogoImage src="https://dynamic.brandcrowd.com/asset/logo/cd55ba0f-0e00-4545-af06-dd9978af2b73/logo-search-grid-1x?logoTemplateVersion=1&v=637323645987430000&text=SerraGeek" alt="Logo" />
-          </Link>
-        </LogoContainer>
-
-        <RightContainer>
-
-          <LoginContainer style={{
-            display:
-              location.pathname === "/Login" ||
-                location.pathname === "/Contact"
-
-                ? "none"
-                : "flex",
-          }}>
-
-            <Link to={"/Cart"}>
-              <span>Carrinho</span>
+          <LogoContainer>
+            <Link to={"/"}>
+              <LogoImage src="https://dynamic.brandcrowd.com/asset/logo/cd55ba0f-0e00-4545-af06-dd9978af2b73/logo-search-grid-1x?logoTemplateVersion=1&v=637323645987430000&text=SerraGeek" alt="Logo" />
             </Link>
-          </LoginContainer>
+          </LogoContainer>
 
-          <LoginContainer>
-            <Link to={"/Contact"}>
-              <span>Fale com a gente</span>
-            </Link>
-          </LoginContainer>
+          <SearchContainer
+            style={{
+              display:
+                location.pathname === "/Login" ||
+                  location.pathname === "/Contact"
 
-          {user === '' ?
-                <LoginContainer>
+                  ? "none"
+                  : "flex",
+            }}
+            onChange={(e) => setFilteredProducts(products.filter(product => product.nome.toLowerCase().includes(e.target.value.toLowerCase())))}
+          >
+            <SearchBar placeholder="O que você procura?" />
+          </SearchContainer>
+
+          <RightContainer>
+
+            <LoginContainer style={{
+              display:
+                location.pathname === "/Login" ||
+                  location.pathname === "/Contact"
+
+                  ? "none"
+                  : "flex",
+            }}>
+
+              <Link to={"/Cart"}>
+                <span>Carrinho</span>
+              </Link>
+            </LoginContainer>
+
+            <LoginContainer>
+              <Link to={"/Contact"}>
+                <span>Fale com a gente</span>
+              </Link>
+            </LoginContainer>
+
+            {user === '' ?
+              <LoginContainer style={{
+                display:
+                  location.pathname === "/Login"
+
+
+                    ? "none"
+                    : "flex",
+              }}>
                 <Link to={"/Login"}>
                   <span>Fazer Login</span>
                 </Link>
@@ -95,16 +104,18 @@ export function Header() {
                   <span>Bem-vindo, {getLocal('user')}</span>
                   <span id="logout" onClick={() => logout()}>Logout</span>
                 </Link>
-            </LogoutContainer>
-          }
-          
-        </RightContainer>
-      </Container>
+              </LogoutContainer>
+            }
+
+          </RightContainer>
+          <button className="button1" onClick={() => themeToggler()}>Mudar tema</button>
+
+        </Container>
       </ThemeProvider>
       <Outlet />
-      
+
       <FooterContainer />
-      
+
     </>
   );
 }

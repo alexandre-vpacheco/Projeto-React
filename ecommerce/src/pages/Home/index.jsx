@@ -11,13 +11,14 @@ import {
 import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 import { setLocal } from "../../services/localStorage";
+import { useProducts } from "../../hooks/useProducts";
 
 
 export function Home() {
   const location = useLocation();
   const [selectedItem, setSelectedItem] = useState(null);
-  const [products, setProducts] = useState([]);
-
+  //const [products, setProducts] = useState([]);
+const {filteredProducts} = useProducts()
 
   useEffect(() => {
     // Atualizar o item selecionado com base na localização
@@ -32,17 +33,17 @@ export function Home() {
     setSelectedItem(pathToIndex[location.pathname]);
   }, [location.pathname]);
 
-  useEffect(() => {
-    async function fetchData() {
-      await api.get('./produtos').then( response => {
-        setProducts(response.data);
-      }).catch(err => {
-        console.log(err);
-      })
-    }
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     await api.get('./produtos').then( response => {
+  //       setProducts(response.data);
+  //     }).catch(err => {
+  //       console.log(err);
+  //     })
+  //   }
 
-    fetchData();
-  }, [])
+  //   fetchData();
+  // }, [])
 
   function goToProduct(id) {
     setLocal('idProduct', id);
@@ -100,7 +101,7 @@ export function Home() {
       {/*<img src={iconAction}></img>*/}
 
       <ContainerProducts>
-        {products.map((p) => {
+        {filteredProducts.map((p) => {
 
           let category = '';
 

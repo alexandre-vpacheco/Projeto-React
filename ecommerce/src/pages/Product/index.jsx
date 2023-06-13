@@ -68,7 +68,7 @@ function Product() {
                                 <spam>{productQuantity}</spam>
                                  <button onClick={ () => sumQuantity()}>+</button>   
                             </div>
-                                <Button text="adiconar carrinho" color="white" background="black" onClick="" active={true} ></Button>
+                                <Button text="Adicionar ao carrinho" color="white" background="black" onClick="" active={true} ></Button>
                         </ContainerCart>
                     </>
                     :
