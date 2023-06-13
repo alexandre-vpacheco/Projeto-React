@@ -27,10 +27,11 @@ export const Container = styled.div`
 `;
 
 export const NavBarContainer = styled.div`
+  align-items: center;
   display: inline-flex;
   position: relative;
   overflow: hidden;
-  max-width: 100%;
+  width: 100%;
 
   background-color: #343434;
   padding: 0 20px;
@@ -46,6 +47,7 @@ export const NavBarContainer = styled.div`
 `;
 
 export const NavBar = styled.ul`
+  justify-content: center;
   list-style-type: none;
   display: flex;
   align-items: center;
@@ -53,9 +55,8 @@ export const NavBar = styled.ul`
   margin: 0;
   width: 100%;
   height: 100%;
-  padding: 0 0 0 70px;
-  animation: ${slideInFromLeft} 0.5s ease-in;
-
+  padding: 0 0 0 0px;
+  
   @media screen and (max-width: 768px) {
     padding: 0;
     gap: 10px;
@@ -64,6 +65,8 @@ export const NavBar = styled.ul`
   a {
     height: 100%;
   }
+
+  animation: ${slideInFromLeft} 0.5s ease-in;
 `;
 
 export const NavItem = styled.li`

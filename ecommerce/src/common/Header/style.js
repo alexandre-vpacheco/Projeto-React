@@ -11,10 +11,8 @@ const fadeIn = keyframes`
 
 export const Container = styled.div`
   /* Estilos para o container principal */
-  
 
   background-color: rgb(221, 41, 11);
-
   padding: 0px;
   height: 75px;
   animation: ${fadeIn} 0.5s ease-in;
@@ -76,7 +74,7 @@ export const RightContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 70px;
 
   @media only screen and (max-width: 1015px) {
     border-top: 1px solid #fff;
@@ -140,7 +138,6 @@ export const SearchContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 10px;
   animation: ${fadeIn} 0.5s ease-in;
 `;
 
@@ -171,9 +168,9 @@ export const SearchBar = styled.input`
 
 export const LogoImage = styled.img`
   /* Estilos para a imagem do logo */
-  width: 200px;
-  height: 100px;
-  border-radius: 30%;
+  //width: 200px;
+  height: 100%;
+  align-items: center;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   transition: box-shadow 0.3s ease-in-out;
 
