@@ -1,4 +1,6 @@
 import { Link, Outlet, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { getLocal, setLocal } from '../../services/localStorage';
 
 import {
   Container,
@@ -7,15 +9,25 @@ import {
   SearchContainer,
   SearchBar,
   LogoImage,
-  ContactContainer,
-  CartContainer,
   LoginContainer,
+  LogoutContainer
 } from "./style";
 import { FooterContainer } from "../Footer/style";
 
 
 export function Header() {
   const location = useLocation();
+  const [user, setUser] = useState('');
+
+  useEffect(() => {
+    setUser(getLocal('user'));
+  }, []);
+
+  function logout() {
+    setLocal('user', '');
+    setUser(getLocal('user'));
+    windown.location.href = '/';
+  }
 
   return (
     <>
@@ -42,42 +54,40 @@ export function Header() {
 
         <RightContainer>
 
-        <CartContainer style={{
-          display:
-            location.pathname === "/Login" ||
-              location.pathname === "/Contact"
+          <LoginContainer style={{
+            display:
+              location.pathname === "/Login" ||
+                location.pathname === "/Contact"
 
-              ? "none"
-              : "flex",
-        }}>
+                ? "none"
+                : "flex",
+          }}>
 
-          <Link to={"/Cart"}>
+            <Link to={"/Cart"}>
+              <span>Carrinho</span>
+            </Link>
+          </LoginContainer>
 
-            <a>Carrinho</a>
-
-          </Link>
-        </CartContainer>
-
-        <LoginContainer style={{
-          display:
-              location.pathname === "/Contact"
-
-              ? "none"
-              : "flex",
-        }}>
-          <Link to={"/Login"}>
-
-            <a>Fazer Login</a>
-          </Link>
-        </LoginContainer>
-
-        
-          <ContactContainer>
+          <LoginContainer>
             <Link to={"/Contact"}>
-              <a>Fale com a gente</a>
-              </Link>
+              <span>Fale com a gente</span>
+            </Link>
+          </LoginContainer>
 
-          </ContactContainer>
+          {user === '' ?
+                <LoginContainer>
+                <Link to={"/Login"}>
+                  <span>Fazer Login</span>
+                </Link>
+              </LoginContainer> :
+              <LogoutContainer>
+                <Link id="linkHeader" to={"/"}>
+                  <span>Bem-vindo, {getLocal('user')}</span>
+                  <span id="logout" onClick={() => logout()}>Logout</span>
+                </Link>
+            </LogoutContainer>
+          }
+          
         </RightContainer>
       </Container>
       <Outlet />

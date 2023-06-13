@@ -1,9 +1,10 @@
 import { Route, BrowserRouter, Routes } from "react-router-dom";
 import { Header } from "../common/Header";
-import { Home } from "../pages/Home"
-import { Contact } from "../pages/Contact"
-import { Login } from "../pages/Login"
-import { Cart } from "../pages/Cart"
+import { Home } from "../pages/Home";
+import { Contact } from "../pages/Contact";
+import { Login } from "../pages/Login";
+import { Cart } from "../pages/Cart";
+import Product from "../pages/Product";
 
 export function AllRoutes() {
   return (
@@ -18,6 +19,7 @@ export function AllRoutes() {
           <Route Component={Contact} path="/Contact" />
           <Route Component={Login} path="/Login" />
           <Route Component={Cart} path="/Cart" />
+          <Route Component={Product} path="/Product" />
         </Route>
 
       </Routes>
