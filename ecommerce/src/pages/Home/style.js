@@ -22,7 +22,11 @@ export const Container = styled.div`
   flex-direction: column;
   width: 100%;
   background-color: gray;
-  height: 100vh;
+  min-height: 100vh;
+  background: url('https://marketplace.canva.com/EAFHm4JWsu8/1/0/1600w/canva-pink-landscape-desktop-wallpaper-HGxdJA_xIx0.jpg');
+  background-repeat: no-repeat;
+  background-size: cover; 
+  background-attachment: fixed;
 `;
 
 export const NavBarContainer = styled.div`
@@ -132,4 +136,57 @@ export const NavIndicator = styled.div`
   height: 5px;
   z-index: 1;
   border-radius: 8px 8px 0 0;
+`;
+
+export const ContainerProducts = styled.div`
+  display: grid;
+  grid-template-columns: auto auto auto;
+  width: 80%;
+  margin: 50px auto;
+  gap: 50px;
+`;
+
+
+export const CardProduct = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 10px;
+  padding: 10px 0;
+  width: 100%;
+  background: #fff;
+  align-items: center;
+  color: #fff;
+  cursor: pointer;
+  transition: .1s;
+  text-align: center;
+  background-color: #ffffff05;
+  backdrop-filter: blur(51px);
+  -webkit-backdrop-filter: blur(25px);
+  animation: cards .3s linear;
+
+  &:hover {
+    box-shadow: 1px 1px 10px #fff;
+  }
+
+  img {
+    width: 200px;
+  }
+
+
+  h1 {
+    font-size: 20px;
+    margin: 0;
+    width: 200px;
+    text-shadow: 2px 2px #000;
+  }
+
+  span {
+    text-shadow: 2px 2px #000;
+  }
+
+  @keyframes cards {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+  }
 `;

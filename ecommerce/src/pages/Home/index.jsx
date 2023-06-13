@@ -1,17 +1,23 @@
 import { Link, useLocation } from "react-router-dom";
-import { Container, NavBarContainer, NavBar, NavItem, NavIndicator } from "./style";
+import { 
+  Container, 
+  NavBarContainer, 
+  NavBar, 
+  NavItem, 
+  NavIndicator,
+  ContainerProducts,
+  CardProduct,
+} from "./style";
 import { useEffect, useState } from "react";
-
-import iconAction from "../../assets/action11.jpg" 
+import { api } from "../../services/api";
+import iconAction from "../../assets/action11.jpg"
 
 
 export function Home() {
   const location = useLocation();
   const [selectedItem, setSelectedItem] = useState(null);
+  const [products, setProducts] = useState([]);
 
-  useEffect(() => {
-    // Inicialização da API
-  }, []);
 
   useEffect(() => {
     // Atualizar o item selecionado com base na localização
@@ -27,26 +33,19 @@ export function Home() {
   }, [location.pathname]);
 
   useEffect(() => {
-    function fetchData() {
-        setTimeout(() => {
-            var pkmnFormatted = pokemonData.map(pokemon => {
-                var str = "" + pokemon.id
-                var pad = "000"
-                var newId = pad.substring(0, pad.length - str.length) + str
-
-                return {...pokemon, newId: newId}
-            });
-
-            setPokemons(pkmnFormatted)
-        }, 2000)
+    async function fetchData() {
+      await api.get('./produtos').then( response => {
+        setProducts(response.data);
+      }).catch(err => {
+        console.log(err);
+      })
     }
 
     fetchData();
-}, [])
+  }, [])
 
   return (
     <Container>
-
       <NavBarContainer>
         <NavBar>
           <NavItem
@@ -93,11 +92,59 @@ export function Home() {
       </NavBarContainer>
 
 
-      <img src={iconAction}></img>
+      {/*<img src={iconAction}></img>*/}
+
+      <ContainerProducts>
+        {products.map((p) => {
+
+          let category = '';
+
+          switch(selectedItem) {
+            case 2: 
+              category = 'Anime';
+              break;
+            case 3:
+              category = 'Jogos';
+              break;
+            case 4: 
+              category = 'Filmes';
+              break;
+            case 5: 
+              category = 'Outros';
+              break;
+            default:
+              category = '';
+          }
+
+          if(category === '') {
+            return (
+              <CardProduct key={p.idProduto}>
+                <img src={p.imagem} alt={p.descricao} />
+                <div>
+                  <h1>{p.nome}</h1>
+                  <span>R${p.valorUnitario.toFixed(2)}</span>
+                </div>
+              </CardProduct>
+            )
+          }
+          else if(p.categoriaDTO.nome === category) {
+            return (
+              <CardProduct key={p.idProduto}>
+                <img src={p.imagem} alt={p.descricao} />
+                <div>
+                  <h1>{p.nome}</h1>
+                  <span>R${p.valorUnitario.toFixed(2)}</span>
+                </div>
+              </CardProduct>
+            )
+          }
+          
+        })}
+      </ContainerProducts>
 
 
     </Container>
 
-    
+
   )
 }
