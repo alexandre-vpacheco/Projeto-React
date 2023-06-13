@@ -1,54 +1,97 @@
 import { Link, Outlet, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { getLocal, setLocal } from '../../services/localStorage';
 
 import {
-    Container,
-    LeftContainer,
-    LogoContainer,
-    ProfileContainer,
-    RightContainer,
-    SearchContainer,
-    SearchBar,
-    LogoImage,
-  } from "./style";
+  Container,
+  LogoContainer,
+  RightContainer,
+  SearchContainer,
+  SearchBar,
+  LogoImage,
+  LoginContainer,
+  LogoutContainer
+} from "./style";
+import { FooterContainer } from "../Footer/style";
 
 
 export function Header() {
   const location = useLocation();
+  const [user, setUser] = useState('');
+
+  useEffect(() => {
+    setUser(getLocal('user'));
+  }, []);
+
+  function logout() {
+    setLocal('user', '');
+    setUser(getLocal('user'));
+    windown.location.href = '/';
+  }
 
   return (
     <>
       <Container>
-        <LeftContainer>
-          <LogoContainer>
-            <Link to={"/"}>
-              <LogoImage src="/path/to/logo.png" alt="Logo" />
-            </Link>
-          </LogoContainer>
-        </LeftContainer>
 
         <SearchContainer
           style={{
             display:
-              location.pathname === "/" ||
-              location.pathname === "/anime" ||
-              location.pathname === "/jogos" ||
-              location.pathname === "/filme" ||
-              location.pathname === "/outros" 
-                ? "flex"
-                : "none",
+              location.pathname === "/Login" ||
+                location.pathname === "/Contact"
+
+                ? "none"
+                : "flex",
           }}
         >
-          <SearchBar placeholder="Search..." />
+          <SearchBar placeholder="O que você procura?" />
         </SearchContainer>
+
+        <LogoContainer>
+          <Link to={"/"}>
+            <LogoImage src="https://dynamic.brandcrowd.com/asset/logo/cd55ba0f-0e00-4545-af06-dd9978af2b73/logo-search-grid-1x?logoTemplateVersion=1&v=637323645987430000&text=SerraGeek" alt="Logo" />
+          </Link>
+        </LogoContainer>
+
         <RightContainer>
-          <ProfileContainer>
-            <span>
-              Welcome, <span>Yan</span>
-            </span>
-          </ProfileContainer>
+
+          <LoginContainer style={{
+            display:
+              location.pathname === "/Login" ||
+                location.pathname === "/Contact"
+
+                ? "none"
+                : "flex",
+          }}>
+
+            <Link to={"/Cart"}>
+              <span>Carrinho</span>
+            </Link>
+          </LoginContainer>
+
+          <LoginContainer>
+            <Link to={"/Contact"}>
+              <span>Fale com a gente</span>
+            </Link>
+          </LoginContainer>
+
+          {user === '' ?
+                <LoginContainer>
+                <Link to={"/Login"}>
+                  <span>Fazer Login</span>
+                </Link>
+              </LoginContainer> :
+              <LogoutContainer>
+                <Link id="linkHeader" to={"/"}>
+                  <span>Bem-vindo, {getLocal('user')}</span>
+                  <span id="logout" onClick={() => logout()}>Logout</span>
+                </Link>
+            </LogoutContainer>
+          }
+          
         </RightContainer>
       </Container>
       <Outlet />
+      <FooterContainer />
     </>
   );
-        }
+}
