@@ -22,7 +22,7 @@ export const Container = styled.div`
   flex-direction: column;
   width: 100%;
   background-color: gray;
-  height: 100vh;
+  min-height: 100vh;
 `;
 
 export const NavBarContainer = styled.div`
@@ -132,4 +132,43 @@ export const NavIndicator = styled.div`
   height: 5px;
   z-index: 1;
   border-radius: 8px 8px 0 0;
+`;
+
+export const ContainerProducts = styled.div`
+  display: grid;
+  grid-template-columns: auto auto auto;
+  width: 80%;
+  margin: 50px auto;
+  gap: 50px;
+`;
+
+
+export const CardProduct = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 10px;
+  padding: 10px 0;
+  width: 100%;
+  background: #fff;
+  align-items: center;
+  color: #000;
+  cursor: pointer;
+  transition: .1s;
+  text-align: center;
+
+  &:hover {
+    box-shadow: 1px 1px 10px #fff;
+  }
+
+  img {
+    width: 200px;
+  }
+
+
+  h1 {
+    font-size: 20px;
+    margin: 0;
+    width: 200px;
+  }
 `;
