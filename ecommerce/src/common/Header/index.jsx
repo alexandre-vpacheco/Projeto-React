@@ -1,6 +1,6 @@
 import { Link, Outlet, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { getLocal } from '../../services/localStorage';
+import { getLocal, setLocal } from '../../services/localStorage';
 
 import {
   Container,
@@ -22,6 +22,12 @@ export function Header() {
   useEffect(() => {
     setUser(getLocal('user'));
   }, []);
+
+  function logout() {
+    setLocal('user', '');
+    setUser(getLocal('user'));
+    windown.location.href = '/';
+  }
 
   return (
     <>
@@ -77,7 +83,7 @@ export function Header() {
               <LogoutContainer>
                 <Link id="linkHeader" to={"/"}>
                   <span>Bem-vindo, {getLocal('user')}</span>
-                  <span id="logout">Logout</span>
+                  <span id="logout" onClick={() => logout()}>Logout</span>
                 </Link>
             </LogoutContainer>
           }
