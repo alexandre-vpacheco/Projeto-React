@@ -192,6 +192,8 @@ export const CardProduct = styled.div`
     margin: 0;
     width: 200px;
     color: black;
+    margin-top: 10px;
+    margin-bottom: 10px;
   }
 
   span {
