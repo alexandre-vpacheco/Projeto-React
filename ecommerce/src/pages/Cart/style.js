@@ -41,7 +41,7 @@ export const ContainerTotal = styled.div`
 
 export const ContainerCart = styled.div`
     display: grid;
-    grid-template-columns: auto auto auto auto;
+    grid-template-columns: auto auto auto;
     color: #000;
     width: 80%;
     gap: 5vw;
