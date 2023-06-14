@@ -5,6 +5,7 @@ import { Contact } from "../pages/Contact";
 import { Login } from "../pages/Login";
 import { Cart } from "../pages/Cart";
 import Product from "../pages/Product";
+import SalesHistory from "../pages/SalesHistory";
 
 export function AllRoutes() {
   return (
@@ -20,6 +21,7 @@ export function AllRoutes() {
           <Route Component={Login} path="/Login" />
           <Route Component={Cart} path="/Cart" />
           <Route Component={Product} path="/Product" />
+          <Route Component={SalesHistory} path="/sales-history" />
         </Route>
 
       </Routes>
