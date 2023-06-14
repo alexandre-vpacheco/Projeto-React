@@ -173,10 +173,10 @@ export const SearchBar = styled.input`
 
 export const LogoImage = styled.img`
   /* Estilos para a imagem do logo */
-  margin-top: 7%;
-  margin-left: -13%;
-  width: 150%;
-  height: 100%;
+ // margin-top: 7%;
+  //margin-left: -13%;
+  width: 230px;
+  height: 70px;
   align-items: start;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   transition: box-shadow 0.3s ease-in-out;
@@ -190,3 +190,17 @@ export const LogoImage = styled.img`
     height: 75px;
   }
 `;
+export const Button1 = styled.button`
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  padding: 0;
+`;
+ 

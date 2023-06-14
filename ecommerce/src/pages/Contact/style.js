@@ -1,14 +1,17 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  margin-top: 50px;
-  margin-bottom: 50px;
-  height: 100vh;
-  //background-color: 'white';
+  min-height: 100vh;
+  background: url("https://assets-metrostyle.abs-cbn.com/prod/metro.style/media/assets-v2/12_december/31/william-ti-toy-room_desktop.jpg?ext=.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-y: center;
+  padding-top: 100px; 
 `;
 
+
 export const BoxContainer = styled.div`
-    background-color: rgba(0, 0, 0, .3);
+    background-color: rgba(255, 255, 255, .6);
     max-height:700px;
     max-width: 400px;
     margin: 0px auto 0px auto;
@@ -100,6 +103,6 @@ margin: auto;
     margin-right: 10px;
     margin-left: 10px;
     border-radius: 70px;
-    background-color: rgba(0, 0, 0, .5);
+    background-color: rgba(0, 0, 0, 1);
 
 `;

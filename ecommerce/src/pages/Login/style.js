@@ -2,24 +2,19 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   min-height: 100vh;
-  background: url("https://i.etsystatic.com/15771164/r/il/a5a362/2203536272/il_fullxfull.2203536272_fwpd.jpg");
+  background: url("https://assets-metrostyle.abs-cbn.com/prod/metro.style/media/assets-v2/12_december/31/william-ti-toy-room_desktop.jpg?ext=.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position-y: center;
-  padding-top: 100px; 
-  span {
-    text-shadow: 2px 2px #000;
-    font-size: 16px;
-  }
+  padding: 100px 0;
 `;
 
 export const BoxContainer = styled.div`
-    background-color: rgba(0, 0, 0, .7);
-    max-width: 400px;
-    margin: 0px auto;
-    padding: 100px 0;
-    height: auto;
-    border-radius: 15px;
+  background-color: rgba(0, 0, 0, 0.85);
+  max-width: 400px;
+  margin: 0px auto;
+  padding: 100px 0;
+  border-radius: 15px;
 `;
 export const TitleContainer = styled.div`
   display: flex;
@@ -27,6 +22,7 @@ export const TitleContainer = styled.div`
   justify-content: center;
   gap: 10px;
   text-align:left;
+  margin-top: -80px;
 
   .icon {
     font-size: 21px;
@@ -35,6 +31,7 @@ export const TitleContainer = styled.div`
   h2 {
     text-shadow: 2px 2px #000;
     font-size: 25px;
+    color: #fff;
   }
 
 `;
@@ -59,8 +56,9 @@ export const FormContainer = styled.div`
     font-size: 16px;
     padding: 5px;
     align-items: center;
-    background: #262729;
     margin-top: 5px;
+    background-color: #1a1c1a;
+    color: #fff;
   }
 `;
 
@@ -82,7 +80,21 @@ export const LoginField = styled.div`
         position: absolute;
         top: 0;
         padding: 7px 0 0;
-      }
+    }
+  }
+  span {
+    color: #fff;
+  }
+
+  #password {
+    display: flex;
+    align-items: center;
+  }
+
+  #icon {
+    font-size: 20px;
+    cursor: pointer;
+    margin-left: 5px;
   }
 `
 
@@ -98,6 +110,9 @@ export const ContainerButton = styled.div`
     text-align: center;
     cursor: pointer;
     margin: 0;
+    margin-top: 10px;
+    color: #fff;
+    font-weight: bold;
   }
 `;
 
@@ -123,5 +138,4 @@ margin: auto;
     margin-right: 10px;
     //margin-bottom: ;
     margin-left: 10px;
-
 `;

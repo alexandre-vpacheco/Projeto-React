@@ -1,6 +1,8 @@
 import { Link, Outlet, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getLocal, setLocal } from '../../services/localStorage';
+import { FiSun, FiMoon } from 'react-icons/fi';
+import { Button1 } from "./style";
 
 import {
   Container,
@@ -23,7 +25,7 @@ export function Header() {
   const location = useLocation();
   const [user, setUser] = useState('');
   const [theme, setTheme] = useState("light")
-  const {products, setFilteredProducts} = useProducts()
+  const { products, setFilteredProducts } = useProducts()
   const themeToggler = () => {
     theme === "light" ? setTheme('dark') : setTheme('light');
   }
@@ -48,7 +50,7 @@ export function Header() {
 
           <LogoContainer>
             <Link to={"/"}>
-              <LogoImage src="https://dynamic.brandcrowd.com/asset/logo/cd55ba0f-0e00-4545-af06-dd9978af2b73/logo-search-grid-1x?logoTemplateVersion=1&v=637323645987430000&text=SerraGeek" alt="Logo" />
+              <LogoImage src="https://raw.githubusercontent.com/alexandre-vpacheco/Projeto-React/5a61a90c2189fdd3077f3da4a9382e17d4f73930/ecommerce/src/assets/logo-serrageek-hd-removebg.png" alt="Logo" />
             </Link>
           </LogoContainer>
 
@@ -110,7 +112,9 @@ export function Header() {
             }
 
           </RightContainer>
-          <button className="button1" onClick={() => themeToggler()}>Mudar tema</button>
+          <Button1 onClick={() => themeToggler()}>
+            {theme === 'light' ? <FiMoon /> : <FiSun />}
+          </Button1>
 
         </Container>
       </ThemeProvider>
