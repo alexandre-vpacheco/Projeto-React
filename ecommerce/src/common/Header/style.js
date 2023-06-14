@@ -26,6 +26,10 @@ export const Container = styled.div`
    flex-direction: column;
    height: auto;
    align-items: center;
+
+   button{
+    margin: 5px 0;
+   }
   }
 `;
 

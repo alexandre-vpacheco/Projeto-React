@@ -35,6 +35,8 @@ export function Header() {
   function logout() {
     setLocal('user', '');
     setUser(getLocal('user'));
+    setLocal('cartList', [])
+    setLocal('idClient', '');
     window.location.href = '/';
   }
 
