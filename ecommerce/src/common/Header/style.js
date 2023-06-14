@@ -20,6 +20,7 @@ export const Container = styled.div`
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-around;
+  overflow: hidden;
 
   @media screen and (max-width: 1015px) {
    flex-direction: column;
@@ -168,12 +169,14 @@ export const SearchBar = styled.input`
 
 export const LogoImage = styled.img`
   /* Estilos para a imagem do logo */
-  //width: 200px;
+  margin-top: 7%;
+  margin-left: -13%;
+  width: 150%;
   height: 100%;
-  align-items: center;
+  align-items: start;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   transition: box-shadow 0.3s ease-in-out;
-
+  
   &:hover {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   }

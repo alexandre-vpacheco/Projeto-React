@@ -27,7 +27,7 @@ const {filteredProducts} = useProducts()
       "/animes": 2,
       "/jogos": 3,
       "/filmes": 4,
-      "/outros": 5,
+      "/especiais": 5,
     };
 
     setSelectedItem(pathToIndex[location.pathname]);
@@ -91,7 +91,7 @@ const {filteredProducts} = useProducts()
             onClick={() => setSelectedItem(5)}
             color="#FF00FF"
           >
-            <Link to={"/outros"} className="link">Outros</Link>
+            <Link to={"/especiais"} className="link">Especiais</Link>
             {selectedItem === 5 && <NavIndicator className="nav-indicator" />}
           </NavItem>
         </NavBar>
@@ -116,7 +116,7 @@ const {filteredProducts} = useProducts()
               category = 'Filmes';
               break;
             case 5: 
-              category = 'Outros';
+              category = 'Especiais';
               break;
             default:
               category = '';
