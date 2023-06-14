@@ -6,16 +6,15 @@ export const Container = styled.div`
   background-size: cover;
   background-repeat: no-repeat;
   background-position-y: center;
-  padding-top: 100px; 
+  padding: 100px 0;
 `;
 
 export const BoxContainer = styled.div`
-    background-color: rgba(255, 255, 255, 0.6);
-    max-width: 400px;
-    margin: 0px auto;
-    padding: 100px 0;
-    height: 450px;
-    border-radius: 15px;
+  background-color: rgba(0, 0, 0, 0.85);
+  max-width: 400px;
+  margin: 0px auto;
+  padding: 100px 0;
+  border-radius: 15px;
 `;
 export const TitleContainer = styled.div`
   display: flex;
@@ -32,6 +31,7 @@ export const TitleContainer = styled.div`
   h2 {
     text-shadow: 2px 2px #000;
     font-size: 25px;
+    color: #fff;
   }
 
 `;
@@ -57,8 +57,8 @@ export const FormContainer = styled.div`
     padding: 5px;
     align-items: center;
     margin-top: 5px;
-    background-color: rgba(255, 255, 255, .9);
-    color: black;
+    background-color: #1a1c1a;
+    color: #fff;
   }
 `;
 
@@ -80,10 +80,21 @@ export const LoginField = styled.div`
         position: absolute;
         top: 0;
         padding: 7px 0 0;
-      }
+    }
   }
   span {
-    color: black;
+    color: #fff;
+  }
+
+  #password {
+    display: flex;
+    align-items: center;
+  }
+
+  #icon {
+    font-size: 20px;
+    cursor: pointer;
+    margin-left: 5px;
   }
 `
 
@@ -100,7 +111,7 @@ export const ContainerButton = styled.div`
     cursor: pointer;
     margin: 0;
     margin-top: 10px;
-    color: black;
+    color: #fff;
     font-weight: bold;
   }
 `;

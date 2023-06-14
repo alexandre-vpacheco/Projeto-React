@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { AiOutlineLogin } from "react-icons/ai";
+import { AiOutlineLogin, AiOutlineEye } from "react-icons/ai";
 import {
   Container,
   BoxContainer,
@@ -22,6 +22,7 @@ export function Login() {
   const [cpf, setCpf] = useState('');
   const [telefone, setTelefone] = useState('');
   const [dataNascimento, setDataNascimento] = useState('');
+  const [inputPassword, setInputPassword] = useState('password');
 
   async function signin() {
     await api.post('/auth/signin', {
@@ -40,23 +41,36 @@ export function Login() {
   }
 
   async function signup() {
-    let idUser = '';
-    let idAddress = '';
-    await api.post('/auth/signup', {
-      username: username,
-      email: email,
-      password: password,
-      role: ["user"],
-    }).then((response) => {
-      const id = response.data.message;
-      let index = id.indexOf('-');
-      idUser = id.substring(0, index).trim(' ');
-    }).catch((err) => {
-      console.log(err);
-      alert('Erro ao cadastrar 😢')
-    })
 
-    await api.post('/enderecos', {
+    if (email === '' || username === '' || password === '' || cpf === '' || telefone === '' || dataNascimento === '') {
+      alert('Não é possível cadastrar com campos vazios 🥺');
+    } else if (password.length < 5) {
+      alert('Senha deve ter no mínimo 6 dígitos 🥺');
+    } else if (cpf.length < 11) {
+      alert('CPF deve ter no mínimo 11 dígitos 🥺');
+    } else if (telefone.length < 8) {
+      alert('Telefone deve ter no mínimo 8 dígitos 🥺');
+    } else if (!email.includes('@') || !email.includes('mail')) {
+      alert('Emial deve estar no formato válido 🥺');
+    }
+    else {
+      let idUser = '';
+      let idAddress = '';
+      await api.post('/auth/signup', {
+        username: username,
+        email: email,
+        password: password,
+        role: ["user"],
+      }).then((response) => {
+        const id = response.data.message;
+        let index = id.indexOf('-');
+        idUser = id.substring(0, index).trim(' ');
+      }).catch((err) => {
+        console.log(err);
+        alert('Erro ao cadastrar 😢')
+      })
+
+      await api.post('/enderecos', {
         cep: "11111111",
         rua: "-",
         bairro: "-",
@@ -64,32 +78,41 @@ export function Login() {
         numero: 0,
         complemento: "-",
         uf: "NN",
-    }).then(response => {
-      idAddress = response.data.idEndereco;
-    }).catch(err => {
-      console.log(err);
-    })
+      }).then(response => {
+        idAddress = response.data.idEndereco;
+      }).catch(err => {
+        console.log(err);
+      })
 
-    await api.post('/clientes', {
-      nomeCompleto: username,
-      email: email,
-      senha: password,
-      cpf: cpf,
-      telefone: telefone,
-      dataNascimento: dataNascimento,
-      user: {
-        id: idUser,
-      },
-      endereco: {
-        idEndereco: idAddress,
-      }
-    }).then((response) => {
-      alert('Cadastrado com sucesso 🙂');
-      window.location.reload();
-    }).catch((err) => {
-      console.log(err);
-      alert('Erro ao cadastrar 😢');
-    })
+      await api.post('/clientes', {
+        nomeCompleto: username,
+        email: email,
+        senha: password,
+        cpf: cpf,
+        telefone: telefone,
+        dataNascimento: dataNascimento,
+        user: {
+          id: idUser,
+        },
+        endereco: {
+          idEndereco: idAddress,
+        }
+      }).then((response) => {
+        alert('Cadastrado com sucesso 🙂');
+        window.location.reload();
+      }).catch((err) => {
+        console.log(err);
+        alert('Erro ao cadastrar 😢');
+      })
+    }
+  }
+
+  function setPasswordVisible() {
+    if(inputPassword === 'text') {
+      setInputPassword('password');
+    } else {
+      setInputPassword('text');
+    }
   }
 
   return (
@@ -99,8 +122,8 @@ export function Login() {
 
           <TitleContainer>
             <AiOutlineLogin className="icon" />
-            {signupActive ? 
-              <h2>Cadastro</h2> : 
+            {signupActive ?
+              <h2>Cadastro</h2> :
               <h2>Página de Login.</h2>
             }
           </TitleContainer>
@@ -110,9 +133,9 @@ export function Login() {
 
               <LoginField active={signupActive}>
                 <span>Digite seu e-mail:</span>
-                <input 
-                  type="text" 
-                  placeholder="Seu e-mail" 
+                <input
+                  type="text"
+                  placeholder="Seu e-mail"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   maxLength={30}
@@ -121,9 +144,9 @@ export function Login() {
 
               <LoginField active={true}>
                 <span>Digite seu nome:</span>
-                <input 
+                <input
                   type="text"
-                  placeholder="Seu nome" 
+                  placeholder="Seu nome"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
                   maxLength={25}
@@ -132,20 +155,24 @@ export function Login() {
 
               <LoginField active={true}>
                 <span>Digite sua senha:</span>
-                <input 
-                  type="password"
-                  placeholder="Sua senha"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  maxLength={12}
-                />
+                <div id='password'>
+                  <input
+                    type={inputPassword}
+                    placeholder="Sua senha"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    minLength={12}
+                  />
+                  <AiOutlineEye id="icon" onClick={() => { setPasswordVisible() }}/>
+                </div>
+
               </LoginField>
 
               <LoginField active={signupActive}>
                 <span>Digite seu cpf:</span>
-                <input 
-                  type="text" 
-                  placeholder="Seu cpf" 
+                <input
+                  type="text"
+                  placeholder="Seu cpf"
                   value={cpf}
                   onChange={(e) => setCpf(e.target.value)}
                   maxLength={11}
@@ -154,9 +181,9 @@ export function Login() {
 
               <LoginField active={signupActive}>
                 <span>Digite seu telefone:</span>
-                <input 
-                  type="tel" 
-                  placeholder="Seu telefone" 
+                <input
+                  type="tel"
+                  placeholder="Seu telefone"
                   value={telefone}
                   onChange={(e) => setTelefone(e.target.value)}
                   maxLength={11}
@@ -165,31 +192,31 @@ export function Login() {
 
               <LoginField active={signupActive}>
                 <span>Digite sua data de nascimento:</span>
-                <input 
+                <input
                   type="date"
                   value={dataNascimento}
                   onChange={(e) => setDataNascimento(e.target.value)}
                 />
               </LoginField>
-              
+
               <ContainerButton>
-                <Button 
-                  text="SignIn" 
-                  color="#000" 
+                <Button
+                  text="SignIn"
+                  color="#000"
                   background="#fff"
                   active={!signupActive}
-                  onClick={() => signin()} 
+                  onClick={() => signin()}
                 ></Button>
-                <Button 
-                  text="SignUp" 
-                  color="#000" 
+                <Button
+                  text="SignUp"
+                  color="#000"
                   background="#fff"
                   active={signupActive}
-                  onClick={() => signup()} 
+                  onClick={() => signup()}
                 ></Button>
-                {signupActive ? 
-                  <p onClick={() => {setSignupActive(false)}}>Voltar para o login</p> : 
-                  <p onClick={() => {setSignupActive(true)}}>Não tem uma conta? Clique aqui para se cadastrar</p>
+                {signupActive ?
+                  <p onClick={() => { setSignupActive(false) }}>Voltar para o login</p> :
+                  <p onClick={() => { setSignupActive(true) }}>Não tem uma conta? Clique aqui para se cadastrar</p>
                 }
               </ContainerButton>
             </FormContainer>
