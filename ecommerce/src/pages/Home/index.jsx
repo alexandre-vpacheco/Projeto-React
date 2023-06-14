@@ -123,7 +123,7 @@ const {filteredProducts} = useProducts()
                 <img src={p.imagem} alt={p.descricao} />
                 <div>
                   <h1>{p.nome}</h1>
-                  <span>R${p.valorUnitario.toFixed(2)}</span>
+                  <span>R$ {p.valorUnitario.toFixed(2)}</span>
                 </div>
               </CardProduct>
             )
