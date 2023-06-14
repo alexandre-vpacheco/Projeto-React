@@ -9,15 +9,15 @@ import {
   CardProduct,
 } from "./style";
 import { useEffect, useState } from "react";
-import { api } from "../../services/api";
-import { setLocal } from "../../services/localStorage";
+import { setLocal, getLocal } from "../../services/localStorage";
+import { useProducts } from "../../hooks/useProducts";
 
 
 export function Home() {
   const location = useLocation();
   const [selectedItem, setSelectedItem] = useState(null);
-  const [products, setProducts] = useState([]);
-
+  //const [products, setProducts] = useState([]);
+const {filteredProducts} = useProducts()
 
   useEffect(() => {
     // Atualizar o item selecionado com base na localização
@@ -26,22 +26,18 @@ export function Home() {
       "/animes": 2,
       "/jogos": 3,
       "/filmes": 4,
-      "/outros": 5,
+      "/especiais": 5,
     };
 
     setSelectedItem(pathToIndex[location.pathname]);
   }, [location.pathname]);
 
   useEffect(() => {
-    async function fetchData() {
-      await api.get('./produtos').then( response => {
-        setProducts(response.data);
-      }).catch(err => {
-        console.log(err);
-      })
+    let cartList = getLocal('cartList');
+    console.log(cartList);
+    if(cartList === null) {
+      setLocal('cartList', [])
     }
-
-    fetchData();
   }, [])
 
   function goToProduct(id) {
@@ -90,7 +86,7 @@ export function Home() {
             onClick={() => setSelectedItem(5)}
             color="#FF00FF"
           >
-            <Link to={"/outros"} className="link">Outros</Link>
+            <Link to={"/especiais"} className="link">Especiais</Link>
             {selectedItem === 5 && <NavIndicator className="nav-indicator" />}
           </NavItem>
         </NavBar>
@@ -100,7 +96,7 @@ export function Home() {
       {/*<img src={iconAction}></img>*/}
 
       <ContainerProducts>
-        {products.map((p) => {
+        {filteredProducts.map((p) => {
 
           let category = '';
 
@@ -115,7 +111,7 @@ export function Home() {
               category = 'Filmes';
               break;
             case 5: 
-              category = 'Outros';
+              category = 'Especiais';
               break;
             default:
               category = '';

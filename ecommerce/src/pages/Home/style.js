@@ -21,22 +21,20 @@ export const Container = styled.div`
   justify-content: start;
   flex-direction: column;
   width: 100%;
-  background-color: gray;
+  
   min-height: 100vh;
-  background: url('https://marketplace.canva.com/EAFHm4JWsu8/1/0/1600w/canva-pink-landscape-desktop-wallpaper-HGxdJA_xIx0.jpg');
-  background-repeat: no-repeat;
-  background-size: cover; 
-  background-attachment: fixed;
+
 `;
 
 export const NavBarContainer = styled.div`
+  align-items: center;
   display: inline-flex;
   position: relative;
   overflow: hidden;
-  max-width: 100%;
+  width: 100%;
 
   background-color: #343434;
-  padding: 0 20px;
+  padding: 0 ;
   height: 30px;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
@@ -49,6 +47,7 @@ export const NavBarContainer = styled.div`
 `;
 
 export const NavBar = styled.ul`
+  justify-content: center;
   list-style-type: none;
   display: flex;
   align-items: center;
@@ -56,9 +55,8 @@ export const NavBar = styled.ul`
   margin: 0;
   width: 100%;
   height: 100%;
-  padding: 0 0 0 70px;
-  animation: ${slideInFromLeft} 0.5s ease-in;
-
+  padding: 0 0 0 0px;
+  
   @media screen and (max-width: 768px) {
     padding: 0;
     gap: 10px;
@@ -67,6 +65,8 @@ export const NavBar = styled.ul`
   a {
     height: 100%;
   }
+
+  animation: ${slideInFromLeft} 0.5s ease-in;
 `;
 
 export const NavItem = styled.li`
@@ -145,7 +145,7 @@ export const NavIndicator = styled.div`
 
 export const ContainerProducts = styled.div`
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: auto auto auto auto;
   width: 80%;
   margin: 50px auto;
   gap: 50px;
@@ -170,34 +170,40 @@ export const CardProduct = styled.div`
   cursor: pointer;
   transition: .1s;
   text-align: center;
-  background-color: #ffffff05;
-  backdrop-filter: blur(51px);
-  -webkit-backdrop-filter: blur(25px);
+  background-color: white;
+  //backdrop-filter: blur(25px);
+  //-webkit-backdrop-filter: blur(15px);
   animation: cards .3s linear;
 
   &:hover {
-    box-shadow: 1px 1px 10px #fff;
+    transform: scale(1.1);
+    box-shadow: 0px 0px 15px 10px rgba(255,18,18,0.75);
+    
   }
 
   img {
     width: 15vw;
+    mix-blend-mode: multiply;
   }
-
 
   h1 {
     font-size: 20px;
     margin: 0;
     width: 200px;
-    text-shadow: 2px 2px #000;
+    color: black;
   }
 
   span {
-    text-shadow: 2px 2px #000;
+    color: black;
   }
 
   @keyframes cards {
-    0% {opacity: 0;}
-    100% {opacity: 1;}
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
   }
 
   @media only screen and (max-width: 800px) {

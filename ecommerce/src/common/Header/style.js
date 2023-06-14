@@ -11,10 +11,8 @@ const fadeIn = keyframes`
 
 export const Container = styled.div`
   /* Estilos para o container principal */
-  
 
   background-color: rgb(221, 41, 11);
-
   padding: 0px;
   height: 75px;
   animation: ${fadeIn} 0.5s ease-in;
@@ -22,11 +20,16 @@ export const Container = styled.div`
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-around;
+  overflow: hidden;
 
   @media screen and (max-width: 1015px) {
    flex-direction: column;
    height: auto;
    align-items: center;
+
+   button{
+    margin: 5px 0;
+   }
   }
 `;
 
@@ -76,7 +79,7 @@ export const RightContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 70px;
 
   @media only screen and (max-width: 1015px) {
     border-top: 1px solid #fff;
@@ -140,7 +143,6 @@ export const SearchContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 10px;
   animation: ${fadeIn} 0.5s ease-in;
 `;
 
@@ -171,12 +173,14 @@ export const SearchBar = styled.input`
 
 export const LogoImage = styled.img`
   /* Estilos para a imagem do logo */
-  width: 200px;
-  height: 100px;
-  border-radius: 30%;
+ // margin-top: 7%;
+  //margin-left: -13%;
+  width: 230px;
+  height: 70px;
+  align-items: start;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   transition: box-shadow 0.3s ease-in-out;
-
+  
   &:hover {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   }
@@ -186,3 +190,17 @@ export const LogoImage = styled.img`
     height: 75px;
   }
 `;
+export const Button1 = styled.button`
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  padding: 0;
+`;
+ 

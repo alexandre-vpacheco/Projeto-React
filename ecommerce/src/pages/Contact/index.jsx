@@ -27,15 +27,16 @@ export function Contact() {
             <FormContainer>
               <NameContainer>
                 <span>Nome:    </span>
-                <input type="text" placeholder="Seu nome" />
+                <textarea type="text" placeholder="Seu nome" />
+   
               </NameContainer>
               <EmailContainer>
                 <span>E-mail: </span>
-                <input type="text" placeholder="Seu e-mail" />
+                <textarea type="text" placeholder="Seu e-mail" />
               </EmailContainer>
               <MessageContainer>
                 <span>Mensagem (até 1000 caracteres): <br></br></span>
-                <input type="text" placeholder="Escreva sua mensagem aqui..." />
+                <textarea type="text" placeholder="Escreva sua mensagem aqui..." maxlength="1000" spellcheck="true"/>
               </MessageContainer>
 
 

@@ -19,6 +19,9 @@ export function Login() {
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [cpf, setCpf] = useState('');
+  const [telefone, setTelefone] = useState('');
+  const [dataNascimento, setDataNascimento] = useState('');
 
   async function signin() {
     await api.post('/auth/signin', {
@@ -26,6 +29,8 @@ export function Login() {
       password: password
     }).then((response) => {
       setLocal('user', response.data.username);
+      setLocal('userId', response.data.id);
+      setLocal('cart', []);
       alert('Bem vindo, ' + response.data.username);
       window.location.href = '/';
     }).catch((err) => {
@@ -35,17 +40,55 @@ export function Login() {
   }
 
   async function signup() {
+    let idUser = '';
+    let idAddress = '';
     await api.post('/auth/signup', {
       username: username,
       email: email,
       password: password,
       role: ["user"],
     }).then((response) => {
-      alert(response.data.message + '🙂');
-      window.location.reload();
+      const id = response.data.message;
+      let index = id.indexOf('-');
+      idUser = id.substring(0, index).trim(' ');
     }).catch((err) => {
       console.log(err);
       alert('Erro ao cadastrar 😢')
+    })
+
+    await api.post('/enderecos', {
+        cep: "11111111",
+        rua: "-",
+        bairro: "-",
+        cidade: "-",
+        numero: 0,
+        complemento: "-",
+        uf: "NN",
+    }).then(response => {
+      idAddress = response.data.idEndereco;
+    }).catch(err => {
+      console.log(err);
+    })
+
+    await api.post('/clientes', {
+      nomeCompleto: username,
+      email: email,
+      senha: password,
+      cpf: cpf,
+      telefone: telefone,
+      dataNascimento: dataNascimento,
+      user: {
+        id: idUser,
+      },
+      endereco: {
+        idEndereco: idAddress,
+      }
+    }).then((response) => {
+      alert('Cadastrado com sucesso 🙂');
+      window.location.reload();
+    }).catch((err) => {
+      console.log(err);
+      alert('Erro ao cadastrar 😢');
     })
   }
 
@@ -72,6 +115,7 @@ export function Login() {
                   placeholder="Seu e-mail" 
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  maxLength={30}
                 />
               </LoginField>
 
@@ -82,6 +126,7 @@ export function Login() {
                   placeholder="Seu nome" 
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
+                  maxLength={25}
                 />
               </LoginField>
 
@@ -92,6 +137,38 @@ export function Login() {
                   placeholder="Sua senha"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
+                  maxLength={12}
+                />
+              </LoginField>
+
+              <LoginField active={signupActive}>
+                <span>Digite seu cpf:</span>
+                <input 
+                  type="text" 
+                  placeholder="Seu cpf" 
+                  value={cpf}
+                  onChange={(e) => setCpf(e.target.value)}
+                  maxLength={11}
+                />
+              </LoginField>
+
+              <LoginField active={signupActive}>
+                <span>Digite seu telefone:</span>
+                <input 
+                  type="tel" 
+                  placeholder="Seu telefone" 
+                  value={telefone}
+                  onChange={(e) => setTelefone(e.target.value)}
+                  maxLength={11}
+                />
+              </LoginField>
+
+              <LoginField active={signupActive}>
+                <span>Digite sua data de nascimento:</span>
+                <input 
+                  type="date"
+                  value={dataNascimento}
+                  onChange={(e) => setDataNascimento(e.target.value)}
                 />
               </LoginField>
               
