@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  height: 100vh;
+  min-height: 100vh;
   background: url("https://i.etsystatic.com/15771164/r/il/a5a362/2203536272/il_fullxfull.2203536272_fwpd.jpg");
   background-size: cover;
   background-repeat: no-repeat;
@@ -16,7 +16,7 @@ export const Container = styled.div`
 export const BoxContainer = styled.div`
     background-color: rgba(0, 0, 0, .7);
     max-width: 400px;
-    margin: 0px auto 100px auto;
+    margin: 0px auto;
     padding: 100px 0;
     height: auto;
     border-radius: 15px;
