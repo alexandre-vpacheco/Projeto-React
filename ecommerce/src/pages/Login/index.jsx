@@ -115,6 +115,7 @@ export function Login() {
                   placeholder="Seu e-mail" 
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  maxLength={30}
                 />
               </LoginField>
 
@@ -125,6 +126,7 @@ export function Login() {
                   placeholder="Seu nome" 
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
+                  maxLength={25}
                 />
               </LoginField>
 
@@ -135,6 +137,7 @@ export function Login() {
                   placeholder="Sua senha"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
+                  maxLength={12}
                 />
               </LoginField>
 
@@ -145,6 +148,7 @@ export function Login() {
                   placeholder="Seu cpf" 
                   value={cpf}
                   onChange={(e) => setCpf(e.target.value)}
+                  maxLength={11}
                 />
               </LoginField>
 
@@ -155,6 +159,7 @@ export function Login() {
                   placeholder="Seu telefone" 
                   value={telefone}
                   onChange={(e) => setTelefone(e.target.value)}
+                  maxLength={11}
                 />
               </LoginField>
 

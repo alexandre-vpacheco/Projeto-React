@@ -34,7 +34,7 @@ export const NavBarContainer = styled.div`
   width: 100%;
 
   background-color: #343434;
-  padding: 0 20px;
+  padding: 0 ;
   height: 30px;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
@@ -174,7 +174,6 @@ export const CardProduct = styled.div`
   //backdrop-filter: blur(25px);
   //-webkit-backdrop-filter: blur(15px);
   animation: cards .3s linear;
-  border-radius: 7%;
 
   &:hover {
     transform: scale(1.1);
