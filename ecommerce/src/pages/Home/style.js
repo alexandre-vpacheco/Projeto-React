@@ -170,9 +170,9 @@ export const CardProduct = styled.div`
   cursor: pointer;
   transition: .1s;
   text-align: center;
-  background-color: #ffffff05;
-  backdrop-filter: blur(25px);
-  -webkit-backdrop-filter: blur(15px);
+  background-color: white;
+  //backdrop-filter: blur(25px);
+  //-webkit-backdrop-filter: blur(15px);
   animation: cards .3s linear;
   border-radius: 7%;
 
@@ -184,17 +184,18 @@ export const CardProduct = styled.div`
 
   img {
     width: 15vw;
+    mix-blend-mode: multiply;
   }
 
   h1 {
     font-size: 20px;
     margin: 0;
     width: 200px;
-    text-shadow: 2px 2px #000;
+    color: black;
   }
 
   span {
-    text-shadow: 2px 2px #000;
+    color: black;
   }
 
   @keyframes cards {

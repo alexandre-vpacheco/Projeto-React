@@ -15,7 +15,7 @@ export function AllRoutes() {
           <Route Component={Home} path="/animes" />
           <Route Component={Home} path="/jogos" />
           <Route Component={Home} path="/filmes" />
-          <Route Component={Home} path="/outros" />
+          <Route Component={Home} path="/especiais" />
           <Route Component={Contact} path="/Contact" />
           <Route Component={Login} path="/Login" />
           <Route Component={Cart} path="/Cart" />

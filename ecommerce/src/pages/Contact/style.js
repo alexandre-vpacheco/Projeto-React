@@ -1,23 +1,22 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  margin-top: 50px;
+  margin-bottom: 50px;
   height: 100vh;
-  background: url("https://i.pinimg.com/originals/25/c4/55/25c455190acf7fa1911b29a03596ac74.jpg");
-background-size: cover;
-background-repeat: no-repeat;
-background-position-y: center;
-background-color: rgba(0, 0, 0, .5);
+  //background-color: 'white';
 `;
 
 export const BoxContainer = styled.div`
-    background-color: rgba(0, 0, 0, .5);
+    background-color: rgba(0, 0, 0, .3);
+    max-height:700px;
     max-width: 400px;
-    margin: 0px auto 100px auto;
-    padding: 50px 0;
-    height: auto;
-    border-radius: 15px;
+    margin: 0px auto 0px auto;
+    padding: 40px 50px;
+    border-radius: 20px;
 `;
 export const TitleContainer = styled.div`
+  color:black;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -44,56 +43,63 @@ export const FormContainer = styled.div`
 `;
 
 export const NameContainer = styled.div`
+color:black;
+margin-right: 110px;
 text-align: left;
 width: 100%;
-    input {
+    textarea {
     height: 25px;
-    width: 300px;
+    width: 400px;
     position: relative;
-      ::placeholder {
-        position: absolute;
-        top: 0;
-        padding: 7px 0 0;
-      }
+    background-color:#fff;
+    color:black;
+    font-family: 'Roboto', sans-serif;
+    border-radius: 5px;
     }
+    
 `
 
 export const EmailContainer = styled.div`
+color:black;
+margin-right: 110px;
 text-align: left;
 width: 100%;
-    input {
+    textarea {
     height: 25px;
-    width: 300px;
+    width: 400px;
     position: relative;
-      ::placeholder {
-        position: absolute;
-        top: 0;
-        padding: 7px 0 0;
-      }
+    background-color:#fff;
+    color:black;
+    font-family: 'Roboto', sans-serif;
+    border-radius: 5px;
     }
 
 `;
 export const MessageContainer = styled.div`
+    margin-right: 110px;
     text-align: left;
     width: 100%;
     vertical-align: top-bottom;
-        input {        
+    color:black;
+    
+        textarea {        
         height: 200px;
-        width: 300px;
-          ::placeholder {
-            position: absolute;
-            top: 0;
-            bottom: 100;
-            padding: 7px 0 0;
-          }
+        width: 400px;
+        background-color:#fff;
+        color:black;
+        font-family: 'Roboto', sans-serif;
+        border-radius: 5px;
+      
         }
+        
 `;
 
 export const SendMsgBt = styled.button`
 margin: auto;
     margin-top: 0px;
     margin-right: 10px;
-    
     margin-left: 10px;
+    border-radius: 70px;
+    background-color: rgba(0, 0, 0, .5);
 
 `;
