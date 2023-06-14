@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { api } from '../../services/api';
-import { getLocal } from '../../services/localStorage';
+import { getLocal, setLocal } from '../../services/localStorage';
 import Button from '../../common/Button';
 import {
     ContainerProduct,
@@ -15,7 +15,8 @@ function Product() {
     const [isLoad, setIsLoad] = useState(false);
     const [productQuantity, setProductQuantity] = useState(1);  
     const idProduct = getLocal('idProduct');
-    const [totalPrice, setTotalPrice] = useState(0); 
+    const [totalPrice, setTotalPrice] = useState(0);
+    const [clients, setClients] = useState([]);
 
     useEffect(() => {
         async function fetchData() {
@@ -28,14 +29,25 @@ function Product() {
             })
         }
 
+        async function getClients() {
+            await api.get('/clientes').then(response => {
+                setClients(response.data);
+            }).catch(err => {
+                console.log(err);
+            })
+        }
+
         fetchData();
+        getClients();
     }, []);
+
     function subtractQuantity() {
-        if(productQuantity >0) { 
+        if(productQuantity > 0) { 
             setProductQuantity(productQuantity-1)
             setTotalPrice(totalPrice - product.valorUnitario)
         }
     }
+
     function sumQuantity() {
         if (productQuantity >= product.qtdEstoque) {
             alert("Quantidade de estoque excedida")
@@ -45,6 +57,34 @@ function Product() {
          setTotalPrice(totalPrice + product.valorUnitario)
         }
     }
+
+    function addCart() {
+        let cartList = [];
+        if(getLocal('cartList').length != 0) {
+            cartList = JSON.parse(getLocal('cartList'));
+        } else {
+            cartList = getLocal('cartList');
+        }
+
+        const client = clients.filter(c => {
+            return c.user.id === getLocal('userId');
+        });
+
+        const cartProduct = {
+            id: product.idProduto,
+            name: product.nome,
+            totalPrice: totalPrice,
+            quantity: productQuantity,
+            image: product.imagem,
+            cliente: client,
+        }
+
+        cartList.push(cartProduct);
+
+        setLocal('cartList', JSON.stringify(cartList));
+        window.location.href = '/cart';
+    }
+    
 
     return (
         <ContainerProduct>
@@ -68,7 +108,7 @@ function Product() {
                                 <spam>{productQuantity}</spam>
                                  <button onClick={ () => sumQuantity()}>+</button>   
                             </div>
-                                <Button text="Adicionar ao carrinho" color="white" background="black" onClick="" active={true} ></Button>
+                                <Button text="Adicionar ao carrinho" color="white" background="black" onClick={() => addCart()} active={true} ></Button>
                         </ContainerCart>
                     </>
                     :
