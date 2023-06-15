@@ -14,7 +14,6 @@ Trabalho desenvolvido pelos etudantes da Residência em TIC Software do Serratec
 <a href = "https://github.com/Anuuxy" target="_blank"> Yan Rodrigues </a> <br>
 <a href = "https://github.com/BrenoRaeder" target="_blank"> Breno Raeder </a> <br>
 <a href = "https://github.com/CrystianKelmer" target="_blank"> Crystian Kelmer </a> <br>
-<a href = "https://github.com/Krymisson" target="_blank"> João Paulo Franco Amaral </a> <br>
 <a href = "https://github.com/victorhbfsouza" target="_blank"> Victor Hugo Souza </a> <br>
   
 ## Screnshots 

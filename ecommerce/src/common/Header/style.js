@@ -79,7 +79,7 @@ export const RightContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 70px;
+  gap: 80px;
 
   @media only screen and (max-width: 1015px) {
     border-top: 1px solid #fff;
@@ -149,7 +149,7 @@ export const SearchContainer = styled.div`
 export const SearchBar = styled.input`
   /* Estilos para a barra de busca */
   padding: 8px;
-  width: 300px;
+  width: 550px;
   border: none;
   border-radius: 5px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
@@ -157,6 +157,8 @@ export const SearchBar = styled.input`
   margin-right: 100px;
   color: #000;
   background-color: #fff;
+  font-weight: bold;
+
 
 
   &:focus {

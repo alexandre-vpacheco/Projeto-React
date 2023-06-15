@@ -98,11 +98,12 @@ export const MessageContainer = styled.div`
 `;
 
 export const SendMsgBt = styled.button`
-margin: auto;
+    margin: auto;
     margin-top: 0px;
     margin-right: 10px;
     margin-left: 10px;
     border-radius: 70px;
     background-color: rgba(0, 0, 0, 1);
+    color: aliceblue;
 
 `;
