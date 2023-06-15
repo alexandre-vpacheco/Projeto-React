@@ -36,8 +36,7 @@ export const NavBarContainer = styled.div`
   background-color: #343434;
   padding: 0 ;
   height: 30px;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
+ 
 
   box-shadow: 0 10px 40px rgba(159, 162, 177, 0.9);
 
@@ -177,7 +176,7 @@ export const CardProduct = styled.div`
 
   &:hover {
     transform: scale(1.1);
-    box-shadow: 0px 0px 15px 10px rgba(255,18,18,0.75);
+    box-shadow: 0px 0px 15px 10px rgba(255,18,18,0.4);
     
   }
 

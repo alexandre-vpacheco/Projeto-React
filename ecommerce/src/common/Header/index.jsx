@@ -19,6 +19,7 @@ import { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme } from "../../common/darkmode/theme";
 import { GlobalStyle } from "../../common/GlobalStyles.js/GlobalStyles";
 import { useProducts } from "../../hooks/useProducts";
+import { FaShoppingCart } from 'react-icons/fa';
 
 
 export function Header() {
@@ -79,9 +80,11 @@ export function Header() {
                   : "flex",
             }}>
 
-              <Link to={"/Cart"}>
-                <span>Carrinho</span>
-              </Link>
+<Link to={"/Cart"}>
+  <span>
+    <FaShoppingCart /> Carrinho
+  </span>
+</Link>
             </LoginContainer>
 
             <LoginContainer>
